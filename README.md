@@ -306,11 +306,15 @@ python src/evaluate.py
 ## 🚀 Newly Added Features
 
 We have recently upgraded the platform with several production-ready features:
-1. **Heuristic PDF Resume Parser**: Direct upload of raw `.pdf` resumes, extracting name, email, phone, skills, experience, and education automatically using [pdf_parser.py](file:///d:/redrob-ranker/src/pdf_parser.py).
-2. **Flexible Data Importers**: Support for uploading and ranking candidate pools in **CSV**, **Excel (.xlsx)**, **JSON**, and **JSONL** formats directly through the UI.
-3. **Skills Fit Radar Chart**: An interactive Plotly radar chart in the **Deep-Dive Profile** tab that visualizes candidate proficiencies against job requirements.
-4. **Custom Candidate Management**: Recruiter tools to manually enter candidate profiles, clear custom lists, or save custom candidates permanently to `data/candidates.jsonl`.
-5. **Docker Deployment**: Added a [Dockerfile](file:///d:/redrob-ranker/Dockerfile) to support instant containerized deployments on platforms like Hugging Face Spaces, Render, or GCP.
+1. **💬 Gemini AI Chat Co-Pilot**: A context-aware conversational recruiting assistant integrated in the **Deep-Dive Profile** tab for Q&A on candidate resumes.
+2. **📥 Custom PDF Report Generator**: Exports a styled A4 PDF summary of candidate scores, strengths, gaps, and career history with one click.
+3. **🔍 Side-by-Side Match Visualizer**: Visual, color-coded keyword and experience comparison between Job Description requirements and candidate profiles.
+4. **🗺️ Talent Location Map**: An interactive geographical Plotly map on the **Executive Dashboard** visualizing candidate locations and relocation willingness.
+5. **Heuristic PDF Resume Parser**: Direct upload of raw `.pdf` resumes, extracting name, email, phone, skills, experience, and education automatically using [pdf_parser.py](file:///d:/redrob-ranker/src/pdf_parser.py).
+6. **Flexible Data Importers**: Support for uploading and ranking candidate pools in **CSV**, **Excel (.xlsx)**, **JSON**, and **JSONL** formats directly through the UI.
+7. **Skills Fit Radar Chart**: An interactive Plotly radar chart in the **Deep-Dive Profile** tab that visualizes candidate proficiencies against job requirements.
+8. **Custom Candidate Management**: Recruiter tools to manually enter candidate profiles, clear custom lists, or save custom candidates permanently to `data/candidates.jsonl`.
+9. **Docker Deployment**: Added a [Dockerfile](file:///d:/redrob-ranker/Dockerfile) to support instant containerized deployments on platforms like Hugging Face Spaces, Render, or GCP.
 
 ---
 
