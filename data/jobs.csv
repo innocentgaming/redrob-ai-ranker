@@ -1,0 +1,27 @@
+job_id,title,department,description,required_skills,preferred_skills,experience_min,experience_max,location_preference,domain
+job_001,Senior AI Engineer,Engineering - AI Team,"
+Senior AI Engineer at Redrob AI.
+5 to 9 years of experience required.
+Must have skills: RAG systems, vector embeddings, semantic search, LLMs, Python.
+Experience with vector databases like Pinecone, Weaviate, Qdrant, FAISS.
+Product company experience preferred. Consulting or services background not preferred.
+Location: Pune or Noida. Willing to relocate preferred.
+Notice period under 30 days preferred.
+Open to work candidates preferred.
+","rag systems, vector embeddings, semantic search, llms, python, Pinecone, Weaviate, Qdrant, FAISS","pytorch, fastapi, docker, aws, git",5,9,"Pune, Noida",AI/ML
+job_002,Lead Data Scientist,Data & Analytics,"
+Looking for a Lead Data Scientist with 6+ years of experience.
+Must be strong in Python, Machine Learning, scikit-learn, deep learning, and PyTorch.
+Experience in deploying models to production using Docker and FastAPI is required.
+Strong background in statistical modeling, pandas, numpy, and SQL.
+Prior experience mentoring junior engineers is highly valued.
+Location: Bangalore or Hyderabad.
+","python, machine learning, scikit-learn, deep learning, pytorch, sql","fastapi, docker, pandas, numpy, aws, git",6,12,"Bangalore, Hyderabad",AI/ML
+job_003,Senior React & Full Stack Developer,Engineering - Web Team,"
+We are hiring a Senior Full Stack Engineer with 4 to 8 years of experience.
+Core requirements: HTML, CSS, Javascript, Typescript, React, Next.js, and Node.js.
+Strong experience with Tailwind CSS, PostgreSQL, and state management (Redux/Zustand).
+Must understand REST API designs, GraphQL, and AWS cloud hosting.
+Active GitHub profile is a major plus.
+Location: Pune, Bangalore, or Remote.
+","javascript, typescript, react, next.js, node.js, html, css","tailwind css, postgresql, redux, rest api, graphql, aws, git",4,8,"Pune, Bangalore, Remote",Web

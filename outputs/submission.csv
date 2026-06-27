@@ -1,0 +1,101 @@
+candidate_id,rank,final_score,skill_score,experience_score,semantic_score,recommendation
+cand_ai_022,1,0.7342,0.7475,1.0,0.5943,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_019,2,0.723,0.8525,0.84,0.5482,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_024,3,0.6819,0.6675,1.0,0.5451,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_034,4,0.6699,0.58,0.92,0.5259,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_032,5,0.669,0.475,1.0,0.5687,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_012,6,0.6668,0.455,1.0,0.5709,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_041,7,0.6578,0.615,0.84,0.5187,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_005,8,0.6562,0.825,0.6,0.5505,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_021,9,0.6471,0.5025,0.84,0.5417,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_036,10,0.6455,0.37,1.0,0.5637,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_027,11,0.643,0.38,1.0,0.5517,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_013,12,0.6417,0.5275,0.8,0.5343,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_039,13,0.6404,0.4575,0.84,0.6065,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_046,14,0.6372,0.405,1.0,0.5434,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_029,15,0.6328,0.45,1.0,0.533,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_053,16,0.6319,0.545,0.68,0.5226,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_049,17,0.6295,0.455,0.76,0.5435,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_035,18,0.6198,0.5625,0.92,0.5188,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_004,19,0.6125,0.755,0.6,0.5281,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_009,20,0.611,0.28,1.0,0.5717,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_016,21,0.61,0.37,1.0,0.5331,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_033,22,0.6098,0.45,0.8,0.514,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_015,23,0.6067,0.28,1.0,0.6079,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_025,24,0.6056,0.4925,0.8,0.474,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_028,25,0.6021,0.35,1.0,0.5708,"Solid candidate. Good core skills match with minor gaps (e.g., missing some nice-to-have skills or longer notice period). Worth interviewing."
+cand_ai_054,26,0.5974,0.4025,0.68,0.541,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_044,27,0.588,0.2275,1.0,0.5774,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_023,28,0.5844,0.14,1.0,0.5861,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_050,29,0.5813,0.35,0.68,0.5257,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_037,30,0.5804,0.37,0.8,0.4918,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_017,31,0.579,0.175,1.0,0.5602,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_047,32,0.577,0.175,1.0,0.5521,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_055,33,0.576,0.4375,0.52,0.5461,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_011,34,0.5749,0.175,0.92,0.5485,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_051,35,0.5731,0.3675,0.52,0.5435,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_042,36,0.5719,0.07,1.0,0.5502,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_014,37,0.5626,0.35,0.8,0.4909,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_045,38,0.561,0.175,0.92,0.5471,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_038,39,0.5591,0.07,0.84,0.5602,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_043,40,0.5563,0.14,1.0,0.523,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_031,41,0.5542,0.1925,0.84,0.5267,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_026,42,0.5473,0.175,0.84,0.5198,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_048,43,0.544,0.2275,0.92,0.5263,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_001,44,0.5426,0.405,0.6,0.5192,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_018,45,0.5409,0.2625,0.8,0.4984,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_052,46,0.5258,0.1925,0.68,0.5328,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_006,47,0.4873,0.2275,0.6,0.5242,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_024,48,0.4814,0.0,1.0,0.4527,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_016,49,0.4793,0.0,1.0,0.4061,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_039,50,0.4757,0.0,1.0,0.422,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_014,51,0.4756,0.0,0.92,0.4346,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_022,52,0.4699,0.0,0.92,0.4612,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_030,53,0.468,0.0,1.0,0.4295,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_040,54,0.4634,0.0,1.0,0.4408,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_021,55,0.4608,0.0,0.92,0.3952,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_037,56,0.4595,0.0,0.92,0.4448,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_003,57,0.4585,0.0,1.0,0.3943,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_ai_007,58,0.4573,0.07,0.6,0.5224,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_036,59,0.4568,0.0,1.0,0.3932,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_006,60,0.4564,0.0,1.0,0.3869,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_032,61,0.456,0.0,0.92,0.4415,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_010,62,0.4537,0.0,1.0,0.3709,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_001,63,0.4516,0.0,1.0,0.3822,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_025,64,0.4508,0.0,1.0,0.3864,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_002,65,0.4507,0.0,1.0,0.3569,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_005,66,0.4506,0.0,1.0,0.3023,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_013,67,0.4503,0.0,1.0,0.3433,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_020,68,0.4496,0.0,1.0,0.3943,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_024,69,0.4493,0.0,1.0,0.3134,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_008,70,0.4487,0.0,1.0,0.3348,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_028,71,0.4484,0.0,1.0,0.3777,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_015,72,0.4483,0.0,1.0,0.3608,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_002,73,0.448,0.0,0.92,0.404,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_020,74,0.4475,0.0,1.0,0.3245,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_009,75,0.4469,0.0,1.0,0.3363,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_023,76,0.4449,0.0,1.0,0.3158,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_012,77,0.4444,0.0,1.0,0.3888,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_011,78,0.444,0.0,0.84,0.3335,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_031,79,0.4434,0.0,1.0,0.3629,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_038,80,0.4432,0.0,1.0,0.3912,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_019,81,0.4432,0.0,1.0,0.3147,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_018,82,0.443,0.0,0.84,0.3574,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_004,83,0.442,0.0,1.0,0.3392,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_015,84,0.4418,0.0,0.84,0.3794,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_011,85,0.4414,0.0,1.0,0.3412,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_007,86,0.4396,0.0,1.0,0.379,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_008,87,0.4396,0.0,1.0,0.3562,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_013,88,0.4387,0.0,1.0,0.3441,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_027,89,0.4387,0.0,1.0,0.3094,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_007,90,0.4381,0.0,0.84,0.349,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_005,91,0.4379,0.0,1.0,0.3322,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_033,92,0.4377,0.0,1.0,0.349,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_003,93,0.4369,0.0,1.0,0.3604,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_035,94,0.4352,0.0,1.0,0.3711,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_019,95,0.4311,0.0,0.92,0.3399,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_025,96,0.4311,0.0,0.76,0.3348,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_016,97,0.429,0.0,0.8,0.3728,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_029,98,0.4288,0.0,1.0,0.3171,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_pm_006,99,0.4284,0.0,0.8,0.3733,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
+cand_web_018,100,0.4224,0.0,0.8,0.3807,Low alignment. Significant skill gaps or experience mismatch. Candidate does not meet the core criteria of this role.
