@@ -9,3 +9,5 @@ streamlit
 fastapi
 uvicorn
 pypdf
+google-generativeai
+fpdf2
