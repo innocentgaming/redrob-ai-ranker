@@ -847,6 +847,94 @@ with tab_detail:
             st.markdown("</div>", unsafe_allow_html=True)
             
         with col_det2:
+            # 0. Skills Fit Radar Chart
+            jd_req_skills = jd_struct.get("required_skills", [])
+            jd_pref_skills = jd_struct.get("preferred_skills", [])
+
+            categories = list(set([s.lower() for s in jd_req_skills] + [s.lower() for s in jd_pref_skills] + [s["name"].lower() for s in c.get("skills", [])[:4]]))
+            categories = [cat for cat in categories if cat.strip()][:8]
+
+            if len(categories) >= 3:
+                cand_skill_map = {s["name"].lower(): s for s in c.get("skills", [])}
+                
+                cand_scores = []
+                jd_scores = []
+                for cat in categories:
+                    matched_skill = None
+                    for c_skill in cand_skill_map:
+                        if cat in c_skill or c_skill in cat:
+                            matched_skill = cand_skill_map[c_skill]
+                            break
+                    if matched_skill:
+                        prof_skill = matched_skill.get("proficiency", "intermediate").lower()
+                        if prof_skill == "expert":
+                            cand_scores.append(100)
+                        elif prof_skill in ["advanced", "senior"]:
+                            cand_scores.append(85)
+                        elif prof_skill == "intermediate":
+                            cand_scores.append(65)
+                        else:
+                            cand_scores.append(45)
+                    else:
+                        cand_scores.append(15)
+                        
+                    if cat in [s.lower() for s in jd_req_skills]:
+                        jd_scores.append(100)
+                    elif cat in [s.lower() for s in jd_pref_skills]:
+                        jd_scores.append(70)
+                    else:
+                        jd_scores.append(30)
+                        
+                categories_closed = categories + [categories[0]]
+                cand_scores_closed = cand_scores + [cand_scores[0]]
+                jd_scores_closed = jd_scores + [jd_scores[0]]
+                
+                fig_radar = go.Figure()
+                
+                fig_radar.add_trace(go.Scatterpolar(
+                    r=jd_scores_closed,
+                    theta=categories_closed,
+                    fill='toself',
+                    name='Job Requirements',
+                    fillcolor='rgba(37, 99, 235, 0.08)',
+                    line=dict(color='rgba(37, 99, 235, 0.5)', width=2)
+                ))
+                
+                fig_radar.add_trace(go.Scatterpolar(
+                    r=cand_scores_closed,
+                    theta=categories_closed,
+                    fill='toself',
+                    name=prof['name'],
+                    fillcolor='rgba(34, 197, 94, 0.15)',
+                    line=dict(color='#22c55e', width=2)
+                ))
+                
+                radar_layout = PLOT_LAYOUT.copy()
+                radar_layout["margin"] = dict(l=50, r=50, t=25, b=25)
+                radar_layout["polar"] = dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 100],
+                        gridcolor="rgba(255,255,255,0.05)" if IS_DARK else "rgba(0,0,0,0.05)",
+                        angle=0,
+                        tickfont=dict(size=8, color=text_muted)
+                    ),
+                    angularaxis=dict(
+                        gridcolor="rgba(255,255,255,0.05)" if IS_DARK else "rgba(0,0,0,0.05)",
+                        tickfont=dict(size=9, color=text)
+                    ),
+                    bgcolor="rgba(0,0,0,0)"
+                )
+                fig_radar.update_layout(**radar_layout)
+                
+                st.markdown("""
+                <div class="chart-wrap">
+                    <div class="chart-title">Skills Fit Radar Analysis</div>
+                    <div class="chart-subtitle">Direct comparison of candidate proficiencies vs Job Description requirements</div>
+                """, unsafe_allow_html=True)
+                st.plotly_chart(fig_radar, use_container_width=True, config={"displayModeBar": False})
+                st.markdown("</div>", unsafe_allow_html=True)
+
             # 1. Feature Attribution Chart (SHAP-inspired breakdown)
             st.markdown("""
             <div class="chart-wrap">
@@ -1028,7 +1116,7 @@ with tab_add:
         <div class="chart-subtitle">Upload file formats like CSV, Excel (.xlsx), JSON, or JSONL to add them to the ranking pool.</div>
     """, unsafe_allow_html=True)
     
-    uploaded_file = st.file_uploader("Upload candidates file", type=["jsonl", "json", "csv", "xlsx"])
+    uploaded_file = st.file_uploader("Upload candidates file", type=["jsonl", "json", "csv", "xlsx", "pdf"])
     
     if uploaded_file is not None:
         try:
@@ -1046,6 +1134,10 @@ with tab_add:
                     new_candidates.extend(data)
                 else:
                     new_candidates.append(data)
+            elif file_name.endswith(".pdf"):
+                from src.pdf_parser import PDFResumeParser
+                cand_dict = PDFResumeParser.parse_pdf(uploaded_file)
+                new_candidates.append(cand_dict)
             elif file_name.endswith(".csv") or file_name.endswith(".xlsx"):
                 if file_name.endswith(".csv"):
                     df_upload = pd.read_csv(uploaded_file)
