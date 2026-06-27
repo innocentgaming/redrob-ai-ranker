@@ -360,6 +360,13 @@ except Exception as e:
     st.error(f"Error loading data: {e}")
     st.stop()
 
+# Initialize session state for custom candidates
+if "custom_candidates" not in st.session_state:
+    st.session_state.custom_candidates = []
+
+# Merge base candidates with custom uploaded/manually added candidates
+all_candidates = candidates + st.session_state.custom_candidates
+
 # ==========================================
 # 5. SIDEBAR CONTROLS
 # ==========================================
@@ -457,7 +464,7 @@ def get_scored_candidates(candidates_data, jd, w, f_hp, f_dom, f_exp):
     return ranked, jd_struct
 
 scored_candidates, jd_struct = get_scored_candidates(
-    candidates, 
+    all_candidates, 
     jd_text, 
     weights, 
     filter_honeypot, 
@@ -466,19 +473,20 @@ scored_candidates, jd_struct = get_scored_candidates(
 )
 
 # Calculate stats
-total_pool = len(candidates)
+total_pool = len(all_candidates)
 scored_count = len(scored_candidates)
-flagged_honeypots = sum(1 for c in candidates if RankingEngine.is_honeypot(c))
+flagged_honeypots = sum(1 for c in all_candidates if RankingEngine.is_honeypot(c))
 avg_score = np.mean([sc["final_score"] for sc in scored_candidates]) if scored_count > 0 else 0.0
 
 # ==========================================
 # 7. EXECUTIVE TABS
 # ==========================================
-tab_dash, tab_rank, tab_detail, tab_eval = st.tabs([
+tab_dash, tab_rank, tab_detail, tab_eval, tab_add = st.tabs([
     "📊 Executive Dashboard", 
     "🏆 Candidate shortlists", 
     "👤 Deep-Dive Profile",
-    "🧪 Evaluation & Benchmark"
+    "🧪 Evaluation & Benchmark",
+    "➕ Add External Candidates"
 ])
 
 # ------------------------------------------
@@ -1008,4 +1016,230 @@ with tab_eval:
     except Exception as e:
         st.error(f"Error running evaluation: {e}")
         
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ------------------------------------------
+# TAB 5: ADD EXTERNAL CANDIDATES
+# ------------------------------------------
+with tab_add:
+    st.markdown(f"""
+    <div class="chart-wrap">
+        <div class="chart-title">Import Candidate Data from External Sources</div>
+        <div class="chart-subtitle">Upload file formats like CSV, Excel (.xlsx), JSON, or JSONL to add them to the ranking pool.</div>
+    """, unsafe_allow_html=True)
+    
+    uploaded_file = st.file_uploader("Upload candidates file", type=["jsonl", "json", "csv", "xlsx"])
+    
+    if uploaded_file is not None:
+        try:
+            new_candidates = []
+            file_name = uploaded_file.name
+            
+            if file_name.endswith(".jsonl"):
+                for line in uploaded_file:
+                    line = line.decode("utf-8").strip()
+                    if line:
+                        new_candidates.append(json.loads(line))
+            elif file_name.endswith(".json"):
+                data = json.load(uploaded_file)
+                if isinstance(data, list):
+                    new_candidates.extend(data)
+                else:
+                    new_candidates.append(data)
+            elif file_name.endswith(".csv") or file_name.endswith(".xlsx"):
+                if file_name.endswith(".csv"):
+                    df_upload = pd.read_csv(uploaded_file)
+                else:
+                    df_upload = pd.read_excel(uploaded_file)
+                
+                # Convert DataFrame rows to candidate dicts
+                for _, row in df_upload.iterrows():
+                    cid = str(row.get("candidate_id", f"custom_{np.random.randint(1000, 9999)}"))
+                    name = str(row.get("name", row.get("candidate_name", "Unnamed Candidate")))
+                    title = str(row.get("current_title", row.get("title", "Software Engineer")))
+                    
+                    # Safe float conversion for experience
+                    try:
+                        yoe = float(row.get("years_of_experience", row.get("experience", row.get("yoe", 0))))
+                    except (ValueError, TypeError):
+                        yoe = 0.0
+                        
+                    location = str(row.get("current_location", row.get("location", "Unknown")))
+                    education = str(row.get("education", ""))
+                    headline = str(row.get("headline", f"{title} with {yoe} years of experience"))
+                    summary = str(row.get("summary", ""))
+                    industry = str(row.get("current_industry", row.get("industry", "Technology")))
+                    
+                    # Parse skills (could be comma-separated string or list)
+                    skills_raw = row.get("skills", "")
+                    skills_list = []
+                    if isinstance(skills_raw, str) and skills_raw.strip():
+                        for s in skills_raw.split(","):
+                            s_name = s.strip()
+                            if s_name:
+                                skills_list.append({"name": s_name, "proficiency": "advanced", "duration_months": int(yoe * 12)})
+                    
+                    # Parse signals
+                    open_to_work = bool(row.get("open_to_work_flag", row.get("open_to_work", True)))
+                    notice = int(row.get("notice_period_days", row.get("notice_period", 30)))
+                    commits = int(row.get("github_contributions_commits", row.get("github_commits", 100)))
+                    relocate = bool(row.get("willing_to_relocate", row.get("relocate", True)))
+                    
+                    cand_dict = {
+                        "candidate_id": cid,
+                        "profile": {
+                            "name": name,
+                            "headline": headline,
+                            "summary": summary,
+                            "current_title": title,
+                            "current_industry": industry,
+                            "years_of_experience": yoe,
+                            "current_location": location,
+                            "education": education
+                        },
+                        "skills": skills_list,
+                        "career_history": [
+                            {"company": "Previous Company", "title": title, "description": summary, "start_date": "2020-01-01", "end_date": "Present"}
+                        ],
+                        "projects": [],
+                        "redrob_signals": {
+                            "open_to_work_flag": open_to_work,
+                            "notice_period_days": notice,
+                            "recruiter_response_rate": 0.8,
+                            "willing_to_relocate": relocate,
+                            "github_contributions_commits": commits,
+                            "recent_certifications": [],
+                            "project_frequency_count": 0,
+                            "technology_adoption_index": 0.7
+                        }
+                    }
+                    new_candidates.append(cand_dict)
+            
+            if new_candidates:
+                st.session_state.custom_candidates.extend(new_candidates)
+                st.success(f"Successfully imported {len(new_candidates)} candidates from {file_name}!")
+                st.rerun()
+            else:
+                st.warning("No valid candidates found in the uploaded file.")
+        except Exception as e:
+            st.error(f"Error parsing file: {e}")
+            
+    st.markdown("</div>", unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="chart-wrap">
+        <div class="chart-title">Add Candidate Manually</div>
+        <div class="chart-subtitle">Directly enter candidate details to add them to the pool.</div>
+    """, unsafe_allow_html=True)
+    
+    with st.form("add_candidate_form", clear_on_submit=True):
+        col1, col2 = st.columns(2)
+        with col1:
+            name = st.text_input("Full Name", placeholder="e.g. Jane Doe")
+            title = st.text_input("Current Job Title", placeholder="e.g. Senior AI Engineer")
+            yoe = st.number_input("Years of Experience", min_value=0.0, max_value=40.0, value=5.0, step=0.5)
+            location = st.text_input("Location", placeholder="e.g. Noida")
+            education = st.text_input("Education / University", placeholder="e.g. B.Tech from IIT Delhi")
+            headline = st.text_input("Profile Headline", placeholder="e.g. AI Specialist in NLP & RAG")
+            summary = st.text_area("Profile Summary / Bio", placeholder="Write a short summary of the candidate...")
+            
+        with col2:
+            skills_input = st.text_input("Skills (comma-separated)", placeholder="e.g. Python, RAG systems, LLMs, Pinecone")
+            notice = st.number_input("Notice Period (Days)", min_value=0, max_value=180, value=30)
+            commits = st.number_input("GitHub Contributions (Commits)", min_value=0, max_value=5000, value=150)
+            open_to_work = st.checkbox("Open to Work (Actively Looking)", value=True)
+            relocate = st.checkbox("Willing to Relocate", value=True)
+            
+        submitted = st.form_submit_button("Add Candidate to Pool")
+        if submitted:
+            if not name.strip() or not title.strip():
+                st.error("Name and Job Title are required.")
+            else:
+                skills_list = []
+                if skills_input.strip():
+                    for s in skills_input.split(","):
+                        s_name = s.strip()
+                        if s_name:
+                            skills_list.append({
+                                "name": s_name,
+                                "proficiency": "advanced",
+                                "duration_months": int(yoe * 12)
+                            })
+                
+                custom_id = f"custom_{np.random.randint(10000, 99999)}"
+                new_cand = {
+                    "candidate_id": custom_id,
+                    "profile": {
+                        "name": name.strip(),
+                        "headline": headline.strip() if headline.strip() else f"{title.strip()} with {yoe} years of experience",
+                        "summary": summary.strip(),
+                        "current_title": title.strip(),
+                        "current_industry": "Technology",
+                        "years_of_experience": yoe,
+                        "current_location": location.strip(),
+                        "education": education.strip()
+                    },
+                    "skills": skills_list,
+                    "career_history": [
+                        {
+                            "company": "Current/Previous Company",
+                            "title": title.strip(),
+                            "description": summary.strip(),
+                            "start_date": "2021-01-01",
+                            "end_date": "Present"
+                        }
+                    ],
+                    "projects": [],
+                    "redrob_signals": {
+                        "open_to_work_flag": open_to_work,
+                        "notice_period_days": notice,
+                        "recruiter_response_rate": 0.8,
+                        "willing_to_relocate": relocate,
+                        "github_contributions_commits": commits,
+                        "recent_certifications": [],
+                        "project_frequency_count": 0,
+                        "technology_adoption_index": 0.8
+                    }
+                }
+                
+                st.session_state.custom_candidates.append(new_cand)
+                st.success(f"Successfully added candidate {name.strip()} ({custom_id}) to the pool!")
+                st.rerun()
+                
+    st.markdown("</div>", unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="chart-wrap">
+        <div class="chart-title">Manage Custom Candidates</div>
+        <div class="chart-subtitle">Perform actions on your imported/manually added candidate list.</div>
+    """, unsafe_allow_html=True)
+    
+    col_m1, col_m2 = st.columns(2)
+    with col_m1:
+        if st.button("🗑️ Clear All Custom Candidates", use_container_width=True):
+            st.session_state.custom_candidates = []
+            st.success("Cleared all custom candidates!")
+            st.rerun()
+            
+    with col_m2:
+        if st.button("💾 Save Custom Candidates to Disk", use_container_width=True):
+            if not st.session_state.custom_candidates:
+                st.warning("No custom candidates to save.")
+            else:
+                try:
+                    # Append custom candidates to data/candidates.jsonl
+                    with open("data/candidates.jsonl", "a", encoding="utf-8") as f:
+                        for c in st.session_state.custom_candidates:
+                            f.write(json.dumps(c) + "\n")
+                    
+                    # Clear session state custom candidates since they are now on disk
+                    st.session_state.custom_candidates = []
+                    st.success("Successfully saved custom candidates to data/candidates.jsonl!")
+                    
+                    # Clear the streamlit cache to reload the new candidates from disk
+                    st.cache_data.clear()
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Failed to save to disk: {e}")
+                    
     st.markdown("</div>", unsafe_allow_html=True)
