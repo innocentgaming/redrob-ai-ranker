@@ -204,7 +204,8 @@ redrob-ranker/
 │   ├── explainability.py       # SHAP attributions & natural language rationales
 │   ├── validator.py            # Integrity validator for CSV outputs
 │   ├── generate_data.py        # High-quality synthetic candidate & job generator
-│   └── evaluate.py             # Evaluation metrics runner (NDCG, Precision@K, Recall@K)
+│   ├── evaluate.py             # Evaluation metrics runner (NDCG, Precision@K, Recall@K)
+│   └── pdf_parser.py           # Heuristic PDF resume text extractor and parser
 ├── data/
 │   ├── candidates.jsonl        # Rich candidate profile dataset
 │   ├── candidates.csv          # Flattened candidate metadata for UI
@@ -299,6 +300,17 @@ Traditional ATS systems are notoriously easy to bypass and offer poor ranking qu
 ```bash
 python src/evaluate.py
 ```
+
+---
+
+## 🚀 Newly Added Features
+
+We have recently upgraded the platform with several production-ready features:
+1. **Heuristic PDF Resume Parser**: Direct upload of raw `.pdf` resumes, extracting name, email, phone, skills, experience, and education automatically using [pdf_parser.py](file:///d:/redrob-ranker/src/pdf_parser.py).
+2. **Flexible Data Importers**: Support for uploading and ranking candidate pools in **CSV**, **Excel (.xlsx)**, **JSON**, and **JSONL** formats directly through the UI.
+3. **Skills Fit Radar Chart**: An interactive Plotly radar chart in the **Deep-Dive Profile** tab that visualizes candidate proficiencies against job requirements.
+4. **Custom Candidate Management**: Recruiter tools to manually enter candidate profiles, clear custom lists, or save custom candidates permanently to `data/candidates.jsonl`.
+5. **Docker Deployment**: Added a [Dockerfile](file:///d:/redrob-ranker/Dockerfile) to support instant containerized deployments on platforms like Hugging Face Spaces, Render, or GCP.
 
 ---
 
